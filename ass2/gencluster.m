@@ -44,6 +44,9 @@ while (rows(current) > 0)
         current(end+1,:) = [x,y+1];
       end
       
+      if (x == 1 || x == 2*size+1 || y == 1 || y == 2*size+1)
+        break
+      end
 
     else
       # This field is empty
