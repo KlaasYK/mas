@@ -1,6 +1,6 @@
 function s = clusterstats(pstart, pend, size, runs, inc)
 
-A = zeros(3, (pend-pstart)/inc);
+A = zeros(4, (pend-pstart)/inc);
 c = 1;
 for p = pstart:inc:pend
   vec = [];
@@ -13,10 +13,18 @@ for p = pstart:inc:pend
         vec(end+1) = k;
       endif     
   endfor
-  A(1,c) = mean(vec);
-  A(2,c) = std(vec);
-  A(3,c) = per/runs;
+  if (columns(vec) > 1)
+    A(1,c) = mean(vec);
+    A(2,c) = std(vec);
+  endif
+  A(3,c) = per;
+  A(4,c) = per/runs;
   c = c+1;
 endfor
-
-A
+hold on;
+bar([pstart:inc:pend],A(3,:));
+errorbar([pstart:inc:pend],A(1,:),A(2,:));
+axis([pstart,pend]);
+axis("on");
+hold off;
+s=A;

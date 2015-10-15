@@ -10,7 +10,7 @@ probs(size+1,size+1) =  0;
 current = [size+1,size+1];
 
 loops = 0;
-clustersize = 1;
+clustersize = 0;
 
 while (rows(current) > 0)
   top = current(1,:);
