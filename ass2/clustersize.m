@@ -1,4 +1,4 @@
-function s = gencluster(p, size)
+function s = clustersize(p, size)
 
 probs = rand(2*size+1);
 map = 0.5*ones(2*size+1,2*size+1);
@@ -10,6 +10,7 @@ probs(size+1,size+1) =  0;
 current = [size+1,size+1];
 
 loops = 0;
+clustersize = 1;
 
 while (rows(current) > 0)
   top = current(1,:);
@@ -22,6 +23,7 @@ while (rows(current) > 0)
   if ( map(x,y) == 0.5 )
 
     if ( probs(x,y) <= p )
+    clustersize = clustersize + 1;
       map(x,y) = 0;
       #top
       if (y > 1 && map(x,y-1) == 0.5)
@@ -42,6 +44,7 @@ while (rows(current) > 0)
       end
       
       if (x == 1 || x == 2*size+1 || y == 1 || y == 2*size+1)
+        clustersize = NaN;
         break
       end
 
@@ -53,4 +56,4 @@ while (rows(current) > 0)
   end
 
 end
-s = map;
+s = clustersize;
