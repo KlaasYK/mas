@@ -14,6 +14,8 @@ for i=2:nsteps
   %pprev(i) = p(i-1);
 end
 
-scatter(x,p);
+scatter(x,p,1);
+xlabel("x");
+ylabel("p");
 title([ 'K = ' num2str(K,'%0.5f') ' p0 = ' num2str(xpinit(2),'%0.5f') ' x0 = ' num2str(xpinit(1),'%0.5f')],'FontSize',18);
 axis square;

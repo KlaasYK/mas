@@ -16,8 +16,12 @@ end
 
 figure;
 hold on;
-plot(p);
-plot(x);
+plot(p,"color","red");
+plot(x,"color","blue");
+legend("p","x");
 title([ 'K = ' num2str(K,'%0.5f') ' p0 = ' num2str(xpinit(2),'%0.5f') ' x0 = ' num2str(xpinit(1),'%0.5f')],'FontSize',18);
 axis square;
+xlabel("iterations");
+ylabel("p,x");
+
 hold off;
