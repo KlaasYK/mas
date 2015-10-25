@@ -22,9 +22,13 @@ for p = pstart:inc:pend
   c = c+1;
 endfor
 hold on;
+axis([pstart,pend]);
+title([ 'size: ' num2str(2*size+1,'%d') 'x' num2str(2*size+1,'%d') ' runs: ' num2str(runs,'%d')  ],'FontSize',18);
+axis("on");
 bar([pstart:inc:pend],A(3,:));
 errorbar([pstart:inc:pend],A(1,:),A(2,:));
-axis([pstart,pend]);
-axis("on");
+xlabel("p");
+ylabel("cluster size/infinite clusters");
+legend("infinite clusters","cluster size","location","northwest");
 hold off;
 s=A;
